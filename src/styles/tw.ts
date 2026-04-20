@@ -12,4 +12,4 @@ export const sectionTitle = 'm-0 text-[clamp(1.6rem,3.5vw,2.4rem)] text-white'
 export const sectionSubtitle = 'mt-1.5 text-studio-muted'
 
 export const outlineButton =
-  'inline-flex items-center justify-center border border-white/20 bg-white/5 px-[1.1rem] py-3 text-[0.88rem] font-medium tracking-[0.01em] text-white transition-colors duration-300 hover:border-red-500 hover:bg-red-500/20'
+  'inline-flex items-center justify-center rounded-xl bg-white/5 px-[1.1rem] py-3 text-[0.88rem] font-medium tracking-[0.01em] text-white transition-colors duration-300 hover:border-red-500 hover:bg-red-500/20'

@@ -5,7 +5,7 @@ import { layoutContainer } from '../../styles/tw'
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-white/10 py-8 pb-10">
+    <footer className="py-8 pb-10">
       {/* <section
         className={`${layoutContainer} flex flex-wrap items-center gap-3`}
         aria-label="Partners"

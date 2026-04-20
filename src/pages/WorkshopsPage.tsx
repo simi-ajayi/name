@@ -19,7 +19,7 @@ export function WorkshopsPage() {
           {workshops.map((workshop, index) => (
             <article
               key={workshop.slug}
-              className="overflow-hidden border border-white/20 bg-white/[0.02]"
+              className="overflow-hidden bg-white/[0.02]"
               data-animate={index % 2 === 0 ? "left" : "right"}
             >
               <img

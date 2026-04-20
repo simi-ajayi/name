@@ -17,7 +17,7 @@ export function PublicationsPage() {
         >
           {mediaFeatures.map((feature, index) => (
             <article
-              className="overflow-hidden border border-white/20 bg-white/[0.02]"
+              className="overflow-hidden  bg-white/[0.02]"
               key={feature.title}
               data-animate={index % 2 === 0 ? "left" : "right"}
             >

@@ -7,7 +7,7 @@ type PageHeroProps = {
 export function PageHero({ title, subtitle, backgroundImage }: PageHeroProps) {
   return (
     <section
-      className="relative min-h-[38vh] border-b border-white/10 bg-studio-bg-soft bg-cover bg-center"
+      className="relative min-h-[38vh]  bg-studio-bg-soft bg-cover bg-center"
       data-animate="zoom"
       style={
         backgroundImage

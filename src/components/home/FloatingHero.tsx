@@ -152,7 +152,7 @@ export function FloatingHero() {
   return (
     <section
       id="floating-objects-hero"
-      className="relative isolate min-h-[min(90dvh,860px)] overflow-hidden border-b border-white/10 max-[680px]:min-h-[86dvh]"
+      className="relative isolate min-h-[min(90dvh,860px)] overflow-hidden max-[680px]:min-h-[86dvh]"
     >
       <div
         className={[
@@ -244,9 +244,9 @@ export function FloatingHero() {
           <Link to="/portfolio/" className={outlineButton}>
             Galleries
           </Link>
-          <Link to="/workshops/" className={outlineButton}>
+          {/* <Link to="/workshops/" className={outlineButton}>
             Upcoming Workshops
-          </Link>
+          </Link> */}
         </div>
       </div>
     </section>

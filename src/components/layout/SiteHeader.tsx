@@ -5,7 +5,7 @@ import { layoutContainer } from '../../styles/tw'
 
 function getNavClass(isActive: boolean) {
   return [
-    'inline-flex border-b px-[0.6rem] py-[0.45rem] text-[0.84rem] tracking-[0.02em] transition-colors duration-300',
+    'inline-flex  px-[0.6rem] py-[0.45rem] text-[0.84rem] tracking-[0.02em] transition-colors duration-300',
     isActive
       ? 'border-red-500 text-white'
       : 'border-transparent text-studio-muted hover:border-red-500 hover:text-white',
