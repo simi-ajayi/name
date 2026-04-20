@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom'
-import { legalLinks } from '../../data/navigation'
-import { sponsors } from '../../data/content'
+// import { Link } from 'react-router-dom'
+// import { legalLinks } from '../../data/navigation'
+// import { sponsors } from '../../data/content'
 import { layoutContainer } from '../../styles/tw'
 
 export function SiteFooter() {
