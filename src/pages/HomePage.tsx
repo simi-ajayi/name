@@ -26,6 +26,44 @@ export function HomePage() {
       <section className={sectionBlock}>
         <div className={layoutContainer}>
           <header className={sectionHeader} data-animate="up">
+            <h2 className={sectionTitle}>Natural Light Photography by Kash Faje</h2>
+            <p className={sectionSubtitle}>
+              Editorial portraiture, travel storytelling, cinematic stills, and practical photography education.
+            </p>
+          </header>
+
+          <div className="max-w-[920px] space-y-4 text-studio-text-dark" data-animate="left">
+            <p className="m-0">
+              Kash Faje is an internationally recognized photographer and educator known for visual storytelling rooted
+              in natural light, timing, and emotional clarity. This portfolio brings together gallery projects, film
+              production stills, and editorial work created across multiple regions and visual cultures.
+            </p>
+            <p className="m-0">
+              Alongside commissioned projects, the site features workshops and educational writing designed to help
+              photographers build repeatable craft systems from capture through final color and print output.
+            </p>
+          </div>
+
+          <div className="mt-5 flex flex-wrap gap-4" data-animate="right">
+            <Link to="/bio/" className="text-studio-text-dark inline-flex items-center gap-2 border-b border-red-500 transition-colors duration-300">
+              Read Full Bio
+              <ArrowRightIcon className="w-4" />
+            </Link>
+            <Link to="/contact/" className="text-studio-text-dark inline-flex items-center gap-2 border-b border-red-500 transition-colors duration-300">
+              Contact for Bookings
+              <ArrowRightIcon className="w-4" />
+            </Link>
+            <Link to="/photographers-in-nigeria/" className="text-studio-text-dark inline-flex items-center gap-2 border-b border-red-500 transition-colors duration-300">
+              Top Photographers in Nigeria
+              <ArrowRightIcon className="w-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className={sectionBlockDark}>
+        <div className={layoutContainer}>
+          <header className={sectionHeader} data-animate="up">
             <h2 className={sectionTitle}>Cuba Galleries</h2>
             <p className={sectionSubtitle}>Selected portfolio highlights</p>
           </header>
@@ -41,7 +79,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className={sectionBlockDark}>
+      <section className={sectionBlock}>
         <div className={layoutContainer}>
           <header className={sectionHeader} data-animate="left">
             <h2 className={sectionTitle}>Media</h2>

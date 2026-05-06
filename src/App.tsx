@@ -10,6 +10,7 @@ import { NotFoundPage } from './pages/NotFoundPage'
 import { NxStudioPage } from './pages/NxStudioPage'
 import { PortfolioGroupPage } from './pages/PortfolioGroupPage'
 import { PortfolioPage } from './pages/PortfolioPage'
+import { PhotographersInNigeriaPage } from './pages/PhotographersInNigeriaPage'
 import { PublicationArticlePage } from './pages/PublicationArticlePage'
 import { PublicationsPage } from './pages/PublicationsPage'
 import { WorkshopDetailPage } from './pages/WorkshopDetailPage'
@@ -92,6 +93,7 @@ function App() {
           <Route path="contact" element={<ContactPage />} />
           <Route path="nxstudio" element={<NxStudioPage />} />
           <Route path="portfolio_group/:group" element={<PortfolioGroupPage />} />
+          <Route path="photographers-in-nigeria" element={<PhotographersInNigeriaPage />} />
           <Route path="home" element={<Navigate to="/" replace />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>

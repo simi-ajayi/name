@@ -27,6 +27,9 @@ export function ContactPage() {
               photography inquiries, send a direct message and include your
               timeline and project scope.
             </p>
+            <p className="m-0">
+              Available for photography projects across Nigeria, including editorial, brand, campaign, and portrait work.
+            </p>
             <p className="m-0">Email: hello@kashfaje.com</p>
             <p className="m-0">Instagram: @kashfaje</p>
           </div>
