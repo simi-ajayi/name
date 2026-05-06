@@ -19,7 +19,7 @@ export function ContactPage() {
             className="max-w-[900px] space-y-4 text-studio-text-dark"
         
           >
-            <h2 className="m-0 text-[clamp(1.6rem,3.5vw,2.4rem)] text-studio-text">
+            <h2 className="m-0 text-[clamp(1.6rem,3.5vw,2.4rem)] underline underline-offset-4 text-studio-text-dark">
               Send an inquiry
             </h2>
             <p className="m-0">

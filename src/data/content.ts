@@ -176,7 +176,8 @@ export const stockImageProducts: DigitalProduct[] = [
       "Color and monochrome variants",
     ],
     buyLabel: "Buy Stock Pack",
-    buyHref: "mailto:hello@kashfaje.com?subject=Purchase%20Havana%20Street%20Life%20Pack",
+    buyHref:
+      "mailto:hello@kashfaje.com?subject=Purchase%20Havana%20Street%20Life%20Pack&body=Hello%20Kashfaje%2C%0A%0AI%20would%20like%20to%20purchase%20the%20Havana%20Street%20Life%20Pack.%20Please%20share%20payment%20and%20delivery%20details.%0A%0AThank%20you.",
   },
   {
     slug: "cinematic-travel-pack",
@@ -192,7 +193,8 @@ export const stockImageProducts: DigitalProduct[] = [
       "Instant download delivery",
     ],
     buyLabel: "Buy Stock Pack",
-    buyHref: "mailto:hello@kashfaje.com?subject=Purchase%20Cinematic%20Travel%20Pack",
+    buyHref:
+      "mailto:hello@kashfaje.com?subject=Purchase%20Cinematic%20Travel%20Pack&body=Hello%20Kashfaje%2C%0A%0AI%20would%20like%20to%20purchase%20the%20Cinematic%20Travel%20Pack.%20Please%20share%20payment%20and%20delivery%20details.%0A%0AThank%20you.",
   },
   {
     slug: "portrait-editorial-pack",
@@ -208,9 +210,10 @@ export const stockImageProducts: DigitalProduct[] = [
       "Delivered with usage guide",
     ],
     buyLabel: "Buy Stock Pack",
-    buyHref: "mailto:hello@kashfaje.com?subject=Purchase%20Portrait%20Editorial%20Pack",
+    buyHref:
+      "mailto:hello@kashfaje.com?subject=Purchase%20Portrait%20Editorial%20Pack&body=Hello%20Kashfaje%2C%0A%0AI%20would%20like%20to%20purchase%20the%20Portrait%20Editorial%20Pack.%20Please%20share%20payment%20and%20delivery%20details.%0A%0AThank%20you.",
   },
-]
+];
 
 export const presetProducts: DigitalProduct[] = [
   {

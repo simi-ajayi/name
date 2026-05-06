@@ -40,7 +40,7 @@ export function SiteFooter() {
         ))}
       </section> */}
 
-      <p className={`${layoutContainer} mt-4 text-[0.88rem] text-studio-text-dark!`} data-animate="right">
+      <p className={`${layoutContainer} mt-4 text-[0.88rem] text-studio-text-dark!`} >
         © 2026 All Rights Reserved. Kash Faje Photography
       </p>
     </footer>
