@@ -17,58 +17,58 @@ const DEFAULT_IMAGE = '/logo.jpg'
 const SITE_NAME = 'Kash Faje'
 
 const staticSeoByPath: Record<string, PageSeo> = {
-  '/': {
+  "/": {
     title: `${SITE_NAME} | Photographer in Nigeria for Portraits, Campaigns, and Visual Storytelling`,
     description:
-      'Looking for top photographers in Nigeria? Explore portfolio galleries, cinematic stills, publications, and workshops by Kash Faje.',
+      "Looking for a top photographer in Nigeria? Explore portfolio galleries, cinematic stills, publications, and workshops by Kash Faje.",
   },
-  '/portfolio': {
+  "/portfolio": {
     title: `Portfolio | ${SITE_NAME}`,
     description:
-      'Browse complete photographic portfolios spanning travel, portraiture, cinematic stills, and documentary moments.',
+      "Browse complete photographic portfolios spanning travel, portraiture, cinematic stills, and documentary moments.",
   },
-  '/galleries': {
+  "/galleries": {
     title: `Galleries | ${SITE_NAME}`,
     description:
-      'Explore curated gallery collections featuring natural light storytelling, color studies, and global visual narratives.',
+      "Explore curated gallery collections featuring natural light storytelling, color studies, and global visual narratives.",
   },
-  '/film-set-stills': {
+  "/film-set-stills": {
     title: `Film Set Stills | ${SITE_NAME}`,
     description:
-      'View set photography and production stills captured by Kash Faje for feature films and episodic projects.',
+      "View set photography and production stills captured by Kash Faje for feature films and episodic projects.",
   },
-  '/bio': {
+  "/bio": {
     title: `About | ${SITE_NAME}`,
     description:
-      'Learn about Kash Faje, an internationally recognized photographer and educator focused on natural light craft.',
+      "Learn about Kash Faje, an internationally recognized photographer and educator focused on natural light craft.",
   },
-  '/publications': {
+  "/publications": {
     title: `Publications | ${SITE_NAME}`,
     description:
-      'Read editorial features and written deep-dives on visual storytelling, lighting craft, and image-making discipline.',
+      "Read editorial features and written deep-dives on visual storytelling, lighting craft, and image-making discipline.",
   },
-  '/workshops': {
+  "/workshops": {
     title: `Workshops | ${SITE_NAME}`,
     description:
-      'Join photography workshops led by Kash Faje covering storytelling, travel practice, monochrome craft, and printing.',
+      "Join photography workshops led by Kash Faje covering storytelling, travel practice, monochrome craft, and printing.",
   },
-  '/contact': {
+  "/contact": {
     title: `Contact | ${SITE_NAME}`,
     description:
-      'Get in touch with Kash Faje for bookings, workshop inquiries, partnerships, and media requests.',
+      "Get in touch with Kash Faje for bookings, workshop inquiries, partnerships, and media requests.",
   },
-  '/photographers-in-nigeria': {
+  "/photographers-in-nigeria": {
     title: `Top Photographers in Nigeria | ${SITE_NAME}`,
     description:
-      'Looking for top photographers in Nigeria? Explore Kash Faje for natural light storytelling, portraiture, cinematic stills, and campaign-ready photography.',
-    image: '/logo.jpg',
+      "Looking for a top photographer in Nigeria? Explore Kash Faje for natural light storytelling, portraiture, cinematic stills, and campaign-ready photography.",
+    image: "/logo.jpg",
   },
-  '/nxstudio': {
+  "/nxstudio": {
     title: `NX Studio | ${SITE_NAME}`,
     description:
-      'Discover NX Studio resources and workflow guidance from Kash Faje for efficient post-production and image refinement.',
+      "Discover NX Studio resources and workflow guidance from Kash Faje for efficient post-production and image refinement.",
   },
-}
+};
 
 const publicationBySlug = Object.fromEntries(
   mediaFeatures.map((feature) => [feature.slug, feature]),
