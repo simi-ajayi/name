@@ -2,12 +2,12 @@ import type { NavItem } from '../types/site'
 
 export const mainNav: NavItem[] = [
   { label: 'Home', path: '/' },
-  { label: 'Galleries', path: '/portfolio/' },
-  { label: 'Film Set Stills', path: '/film-set-stills/' },
+  { label: 'Portfolio', path: '/portfolio/' },
+  { label: 'Shop', path: '/film-set-stills/' },
   { label: 'About', path: '/bio/' },
-  { label: 'Media', path: '/publications/' },
+  { label: 'Publications', path: '/publications/' },
   { label: 'Workshops', path: '/workshops/' },
-  { label: 'Contact', path: '/contact/' },
+  { label: 'Inquiries', path: '/contact/' },
 ]
 
 export const legalLinks: NavItem[] = [

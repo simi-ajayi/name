@@ -3,10 +3,11 @@
 @import "tailwindcss";
 
 @theme {
-  --color-studio-bg: #010101;
-  --color-studio-bg-soft: #070707;
-  --color-studio-text: #d2d6df;
-  --color-studio-muted: #a4acbe;
+  --color-studio-bg: #ffffff;
+  --color-studio-bg-soft: #f5f7fb;
+  --color-studio-text: #ffffff;
+  --color-studio-text-dark: #000000;
+  --color-studio-muted: #ffffff;
   --font-sans: "DM Sans", sans-serif;
   --font-display: "michaelangelo", "Times New Roman", serif;
 }

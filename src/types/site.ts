@@ -21,12 +21,22 @@ export type FilmProject = {
 }
 
 export type MediaFeature = {
+  slug: string
   title: string
-  type: 'Watch' | 'Listen' | 'Read'
   description: string
   image: string
-  linkLabel: string
-  linkHref: string
+  articleBody: string[]
+}
+
+export type DigitalProduct = {
+  slug: string
+  title: string
+  price: string
+  description: string
+  image: string
+  includes: string[]
+  buyLabel: string
+  buyHref: string
 }
 
 export type Workshop = {

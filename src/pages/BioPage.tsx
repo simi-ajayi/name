@@ -1,5 +1,6 @@
 import { PageHero } from '../components/common/PageHero'
 import { bioSummary } from '../data/content'
+import { pageHeroImages } from '../data/imageSources'
 import { layoutContainer, sectionBlock } from '../styles/tw'
 
 export function BioPage() {
@@ -8,12 +9,12 @@ export function BioPage() {
       <PageHero
         title="About Kash Faje"
         subtitle="Work with Kash"
-        backgroundImage="https://images.pixieset.com/506818211/452d9bb6ce8a6fc77db29dee9e9d9c16-large.JPG"
+        backgroundImage={pageHeroImages.bio}
       />
 
       <section className={sectionBlock}>
         <div
-          className={`${layoutContainer} max-w-[900px] space-y-4 text-studio-muted`}
+          className={`${layoutContainer} max-w-[900px]  leading-8 space-y-4 text-studio-text-dark`}
           data-animate="up"
         >
           <p className="m-0">{bioSummary}</p>

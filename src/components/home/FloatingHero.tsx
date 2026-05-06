@@ -1,12 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { floatingObjects, homeHeadline } from '../../data/content'
-import { layoutContainer, outlineButton } from '../../styles/tw'
-
-type FloatState = {
-  startX: number
-  width: number
-}
+import { homeHeadline } from '../../data/content'
+import { galleries } from '../../data/galleries'
+import { layoutContainer } from '../../styles/tw'
 
 const letterRows = [
   ['K', 'A', 'S', 'H'],
@@ -14,16 +10,23 @@ const letterRows = [
 ]
 
 const allLetters = letterRows.flat()
-const FLOAT_SPEED_PX_PER_SECOND = 28
+const HERO_ROTATION_MS = 5200
+const HERO_FADE_DURATION_MS = 2600
+
+const heroBackgroundImages = Array.from(
+  new Set([
+    ...galleries.map((gallery) => gallery.coverImage),
+  ]),
+)
 
 export function FloatingHero() {
   const [revealedCount, setRevealedCount] = useState(0)
-  const [hideBg, setHideBg] = useState(false)
-  const [showObjects, setShowObjects] = useState(false)
   const [dimLetters, setDimLetters] = useState(false)
-  const [hideObjectsOnScroll, setHideObjectsOnScroll] = useState(false)
+  const [activeImageIndex, setActiveImageIndex] = useState(0)
+  const [incomingImageIndex, setIncomingImageIndex] = useState<number | null>(null)
+  const [isCrossfading, setIsCrossfading] = useState(false)
 
-  const objectRefs = useRef<Array<HTMLDivElement | null>>([])
+  const activeIndexRef = useRef(0)
 
   useEffect(() => {
     const timeouts: number[] = []
@@ -38,15 +41,8 @@ export function FloatingHero() {
 
     timeouts.push(
       window.setTimeout(() => {
-        setHideBg(true)
         setDimLetters(true)
       }, 2500),
-    )
-
-    timeouts.push(
-      window.setTimeout(() => {
-        setShowObjects(true)
-      }, 3000),
     )
 
     return () => {
@@ -55,147 +51,69 @@ export function FloatingHero() {
   }, [])
 
   useEffect(() => {
-    const onScroll = () => {
-      setHideObjectsOnScroll(window.scrollY > 200)
-    }
-
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
-  useEffect(() => {
-    if (!showObjects) {
+    if (heroBackgroundImages.length < 2) {
       return
     }
 
-    const elements = objectRefs.current.filter(
-      (element): element is HTMLDivElement => element !== null,
-    )
+    const getNextIndex = (index: number) => (index + 1) % heroBackgroundImages.length
+    let rotationTimeout = 0
+    let fadeTimeout = 0
+    let cancelled = false
 
-    if (!elements.length) {
-      return
+    const queueRotation = () => {
+      rotationTimeout = window.setTimeout(() => {
+        const nextIndex = getNextIndex(activeIndexRef.current)
+        setIncomingImageIndex(nextIndex)
+        window.requestAnimationFrame(() => {
+          setIsCrossfading(true)
+        })
+
+        fadeTimeout = window.setTimeout(() => {
+          activeIndexRef.current = nextIndex
+          setActiveImageIndex(nextIndex)
+          setIncomingImageIndex(null)
+          setIsCrossfading(false)
+
+          if (!cancelled) {
+            queueRotation()
+          }
+        }, HERO_FADE_DURATION_MS)
+      }, HERO_ROTATION_MS)
     }
 
-    let floatState: FloatState[] = []
-    let loopWidth = 1
-    let travelledDistance = 0
-    let resizeFrame = 0
-
-    let animationFrame = 0
-    let previousTime = performance.now()
-
-    const layoutLoop = () => {
-      const gap = Math.max(20, Math.min(52, window.innerWidth * 0.028))
-      let runningX = 0
-
-      floatState = elements.map((element) => {
-        const width = element.offsetWidth
-        const state = { startX: runningX, width }
-        runningX += width + gap
-        return state
-      })
-
-      loopWidth = Math.max(runningX, window.innerWidth + gap)
-      travelledDistance %= loopWidth
-    }
-
-    const updatePositions = () => {
-      elements.forEach((element, index) => {
-        const state = floatState[index]
-        let x = state.startX - travelledDistance
-
-        while (x + state.width < 0) {
-          x += loopWidth
-        }
-
-        element.style.transform = `translate3d(${x}px, 0, 0)`
-      })
-    }
-
-    const onResize = () => {
-      window.cancelAnimationFrame(resizeFrame)
-      resizeFrame = window.requestAnimationFrame(() => {
-        layoutLoop()
-        updatePositions()
-      })
-    }
-
-    layoutLoop()
-    updatePositions()
-
-    const step = (time: number) => {
-      const dtSeconds = (time - previousTime) / 1000
-      previousTime = time
-
-      travelledDistance += FLOAT_SPEED_PX_PER_SECOND * dtSeconds
-      if (travelledDistance > loopWidth) {
-        travelledDistance %= loopWidth
-      }
-
-      updatePositions()
-
-      animationFrame = window.requestAnimationFrame(step)
-    }
-
-    window.addEventListener('resize', onResize, { passive: true })
-    animationFrame = window.requestAnimationFrame(step)
+    queueRotation()
 
     return () => {
-      window.cancelAnimationFrame(animationFrame)
-      window.cancelAnimationFrame(resizeFrame)
-      window.removeEventListener('resize', onResize)
+      cancelled = true
+      window.clearTimeout(rotationTimeout)
+      window.clearTimeout(fadeTimeout)
     }
-  }, [showObjects])
+  }, [])
 
   return (
     <section
-      id="floating-objects-hero"
-      className="relative isolate min-h-[min(90dvh,860px)] overflow-hidden max-[680px]:min-h-[86dvh]"
+      id="landing-hero"
+      className="relative isolate min-h-screen min-h-[min(100dvh,860px)] overflow-hidden max-[680px]:min-h-[100dvh]"
     >
-      <div
-        className={[
-          "absolute inset-0 -z-20 bg-cover bg-center transition-opacity duration-1000",
-          hideBg ? "opacity-0" : "opacity-100",
-        ].join(" ")}
-        style={{
-          backgroundImage:
-            "url(https://images.pixieset.com/506818211/bd4dbcc9f72608be2ed8de4c59d3703b-large.JPG)",
-        }}
-      />
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(160deg,rgba(4,8,23,0.15)_10%,rgba(4,8,23,0.88)_76%)]" />
-
-      <div id="floating-objects" className="absolute inset-0">
-        {floatingObjects.map((object, index) => (
+      <div className="absolute inset-0 -z-20 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url(${heroBackgroundImages[activeImageIndex]})`,
+          }}
+        />
+        {incomingImageIndex !== null ? (
           <div
-            key={`${object.src}-${index}`}
-            ref={(element) => {
-              objectRefs.current[index] = element
-            }}
             className={[
-              'absolute left-0 z-[4] will-change-transform',
-              object.className,
-              showObjects ? 'block' : 'hidden',
+              "absolute inset-0 bg-cover bg-center transition-opacity ease-in-out",
+              isCrossfading ? "opacity-100" : "opacity-0",
             ].join(" ")}
             style={{
-              top: object.top,
+              backgroundImage: `url(${heroBackgroundImages[incomingImageIndex]})`,
+              transitionDuration: `${HERO_FADE_DURATION_MS}ms`,
             }}
-          >
-            <div
-              className={[
-                'group overflow-hidden bg-black transition-[opacity,transform] duration-[900ms] ease-out [box-shadow:1px_1px_0_rgba(20,20,20,1),2px_2px_0_rgba(20,20,20,1),3px_3px_0_rgba(20,20,20,1),4px_4px_0_rgba(20,20,20,1),5px_5px_0_rgba(20,20,20,1),6px_6px_0_rgba(20,20,20,1),7px_7px_0_rgba(20,20,20,1),8px_8px_0_rgba(20,20,20,1)]',
-                hideObjectsOnScroll ? '-translate-y-2.5 opacity-0' : 'translate-y-0 opacity-100',
-              ].join(' ')}
-            >
-              <img
-                src={object.src}
-                alt={object.alt}
-                className="h-auto w-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-            </div>
-          </div>
-        ))}
+          />
+        ) : null}
       </div>
 
       <div
@@ -212,9 +130,9 @@ export function FloatingHero() {
                 <span
                   key={`${letter}-${globalIndex}`}
                   className={[
-                    "font-display text-[clamp(4.1rem,10vw,10.4rem)] leading-[0.95] text-white/92 [text-shadow:0_10px_28px_rgba(0,0,0,0.46)] transition-[transform,color] duration-1000 [transform:rotate3d(0,1,0,90deg)] max-[1024px]:text-[clamp(2.5rem,8vw,5.5rem)]",
+                    "font-display text-[clamp(4.1rem,10vw,10.4rem)] leading-[0.95] text-studio-text/92 [text-shadow:0_10px_28px_rgba(17,24,39,0.22)] transition-[transform,color] duration-1000 [transform:rotate3d(0,1,0,90deg)] max-[1024px]:text-[clamp(2.5rem,8vw,5.5rem)]",
                     isVisible ? "[transform:rotate3d(0,1,0,0deg)]" : "",
-                    dimLetters ? "text-white/55" : "",
+                    dimLetters ? "text-studio-text/55" : "",
                   ].join(" ")}
                 >
                   {letter}
@@ -232,7 +150,7 @@ export function FloatingHero() {
           {homeHeadline.kicker}
         </p>
         <h1
-          className="m-0 text-[clamp(2rem,4vw,3.4rem)] text-white"
+          className="m-0 text-[clamp(2rem,4vw,3.4rem)] text-studio-text"
           data-animate="tilt"
         >
           {homeHeadline.title}
@@ -240,8 +158,8 @@ export function FloatingHero() {
         <p className="m-0 max-w-[520px] text-studio-muted">
           {homeHeadline.subtitle}
         </p>
-        <div className="mt-2.5 flex flex-wrap justify-end gap-3 max-[860px]:justify-start">
-          <Link to="/portfolio/" className={outlineButton}>
+        <div className="mt-2.5 flex text-studio-text flex-wrap justify-end gap-3 max-[860px]:justify-start">
+          <Link to="/portfolio/" className="border border-studio-muted  px-[1.1rem] py-3 text-[0.88rem] font-medium tracking-[0.01em] transition-colors duration-300 hover:text-studio-text-dark hover:bg-studio-bg">
             Galleries
           </Link>
           {/* <Link to="/workshops/" className={outlineButton}>

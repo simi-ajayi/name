@@ -1,6 +1,7 @@
 import { PageHero } from '../components/common/PageHero'
 import { PortfolioGrid } from '../components/gallery/PortfolioGrid'
 import { galleries } from '../data/galleries'
+import { pageHeroImages } from '../data/imageSources'
 import { layoutContainer, sectionBlock } from '../styles/tw'
 
 type PortfolioPageProps = {
@@ -17,7 +18,7 @@ export function PortfolioPage({
       <PageHero
         title={title}
         subtitle={subtitle}
-        backgroundImage="https://images.pixieset.com/506818211/db625df6684925e333ab307fec8a93d0-large.JPG"
+        backgroundImage={pageHeroImages.portfolio}
       />
 
       <section className={sectionBlock}>

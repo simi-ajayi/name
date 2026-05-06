@@ -30,20 +30,20 @@ export function GalleryPage() {
           <ScrollInGallery images={gallery.images} title={gallery.title} />
 
           <nav
-            className="mt-5 flex flex-wrap justify-between gap-4 border-t border-white/10 pt-4"
+            className="mt-5 flex flex-wrap justify-between gap-4 border-t border-studio-muted/20 pt-4"
             aria-label="Gallery navigation"
             data-animate="up"
           >
             <Link
               to={previousGallery.path}
-              className="text-studio-muted transition-colors duration-300 hover:text-white"
+              className="text-studio-muted transition-colors duration-300 hover:text-studio-text"
             >
               ← {previousGallery.title}
             </Link>
-            <Link to="/portfolio/" className="text-studio-muted transition-colors duration-300 hover:text-white">
+            <Link to="/portfolio/" className="text-studio-muted transition-colors duration-300 hover:text-studio-text">
               All Galleries
             </Link>
-            <Link to={nextGallery.path} className="text-studio-muted transition-colors duration-300 hover:text-white">
+            <Link to={nextGallery.path} className="text-studio-muted transition-colors duration-300 hover:text-studio-text">
               {nextGallery.title} →
             </Link>
           </nav>

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { PageHero } from '../components/common/PageHero'
+import { pageHeroImages } from '../data/imageSources'
 import { layoutContainer, outlineButton, sectionBlock } from '../styles/tw'
 
 export function NotFoundPage() {
@@ -8,7 +9,7 @@ export function NotFoundPage() {
       <PageHero
         title="Page Not Found"
         subtitle="This route is not available"
-        backgroundImage="https://images.pixieset.com/506818211/83edf5a93ee175968dded983d3d6fd43-large.JPG"
+        backgroundImage={pageHeroImages.notFound}
       />
       <section className={sectionBlock}>
         <div

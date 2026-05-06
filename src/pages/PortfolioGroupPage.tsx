@@ -2,6 +2,7 @@ import { Navigate, useParams } from 'react-router-dom'
 import { PageHero } from '../components/common/PageHero'
 import { PortfolioGrid } from '../components/gallery/PortfolioGrid'
 import { galleries, portfolioGroupMap } from '../data/galleries'
+import { pageHeroImages } from '../data/imageSources'
 import { layoutContainer, sectionBlock } from '../styles/tw'
 
 export function PortfolioGroupPage() {
@@ -19,7 +20,7 @@ export function PortfolioGroupPage() {
       <PageHero
         title={title}
         subtitle="Filtered gallery view"
-        backgroundImage="https://images.pixieset.com/506818211/83edf5a93ee175968dded983d3d6fd43-large.JPG"
+        backgroundImage={pageHeroImages.portfolioGroup}
       />
 
       <section className={sectionBlock}>

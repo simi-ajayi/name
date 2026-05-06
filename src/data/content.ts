@@ -1,4 +1,4 @@
-import type { FilmProject, MediaFeature, Sponsor } from '../types/site'
+import type { DigitalProduct, FilmProject, MediaFeature, Sponsor } from '../types/site'
 
 export type FloatingObject = {
   className: string
@@ -121,36 +121,147 @@ export const filmProjects: FilmProject[] = [
 
 export const mediaFeatures: MediaFeature[] = [
   {
+    slug: "lighting-craft-deep-dive",
     title: "Lighting Craft Deep Dive",
-    type: "Watch",
     description:
-      "A breakdown of natural light decision-making, visual rhythm, and in-camera choices.",
+      "A practical walkthrough of natural light choices, rhythm, and in-camera storytelling decisions.",
     image:
       "https://images.pixieset.com/282818211/017b27e57245dd2e5a2a4e21b36f209a-medium.JPG",
-    linkLabel: "Watch Feature",
-    linkHref: "/publications/",
+    articleBody: [
+      "Natural light is not just a source, it is a narrative device. The way light enters a space can suggest mood, social class, distance between characters, or emotional safety. Before placing the camera, I observe how the light changes over ten to fifteen minutes and identify where contrast becomes expressive instead of distracting.",
+      "My workflow starts with subtraction. I remove unnecessary modifiers and ask what the frame communicates with only available light, then introduce small adjustments to preserve texture in skin and highlights. This keeps the image grounded and avoids flattening the emotional atmosphere.",
+      "When sequencing a story, I use lighting continuity to carry emotional momentum across scenes. Even subtle consistency in direction and tone helps the audience feel progression without forcing attention to technique. The goal is not perfect light, but meaningful light that supports the story."
+    ],
   },
   {
+    slug: "on-visual-storytelling",
     title: "On Visual Storytelling",
-    type: "Listen",
     description:
-      "Conversations on process, creative discipline, and translating emotion into still imagery.",
+      "An editorial conversation on creative discipline and translating emotion into still images.",
     image:
       "https://images.pixieset.com/620533211/8ba32ea8206089e0f1e9a636046786d3-cover.JPG",
-    linkLabel: "Listen Now",
-    linkHref: "/publications/",
+    articleBody: [
+      "Visual storytelling begins long before the shutter. Research, references, and location observation shape which details deserve emphasis. I often build a short visual brief that defines emotional intent for each scene, then evaluate every frame against that intent.",
+      "Emotion in still imagery usually comes from relationships between elements: gesture, negative space, light falloff, and perspective. Instead of chasing dramatic moments only, I look for transitional moments where a subject reveals uncertainty, focus, or release. Those in-between frames often become the most memorable.",
+      "Discipline is the bridge between inspiration and consistency. I review contact sheets with notes on framing decisions, missed opportunities, and timing patterns. That feedback loop refines instinct over time and makes each project stronger than the last."
+    ],
   },
   {
+    slug: "print-and-editorial-work",
     title: "Print and Editorial Work",
-    type: "Read",
     description:
       "Selected written interviews and feature stories focused on craft and photographic direction.",
     image:
       "https://images.pixieset.com/282818211/4372424c9b67935794bb95f631540539-large.JPG",
-    linkLabel: "Read Articles",
-    linkHref: "/publications/",
+    articleBody: [
+      "Editorial photography demands a balance between authorship and service. The image must carry a clear point of view while supporting the narrative priorities of writers, editors, and design teams. Clear communication at pre-production prevents visual drift during execution.",
+      "For print, detail integrity matters from capture through delivery. I expose with highlight protection, maintain color-managed previews, and evaluate files at intended print size before final export. This protects tonal separation and avoids surprises in production.",
+      "Across interviews and features, the recurring theme is intention. Strong editorial images are rarely accidental; they come from decisions repeated with care. When composition, light, and timing align with narrative purpose, the photograph remains useful long after publication."
+    ],
   },
 ];
+
+export const stockImageProducts: DigitalProduct[] = [
+  {
+    slug: "havana-street-life-pack",
+    title: "Havana Street Life Pack",
+    price: "$79",
+    description:
+      "A curated stock collection of street portraits, architecture, and movement from Havana.",
+    image:
+      "https://images.pixieset.com/282818211/5ed5b735d857bf9ea0d413da4259e9ce-large.JPG",
+    includes: [
+      "40 high-resolution JPEG images",
+      "Commercial license for web and social use",
+      "Color and monochrome variants",
+    ],
+    buyLabel: "Buy Stock Pack",
+    buyHref: "mailto:hello@kashfaje.com?subject=Purchase%20Havana%20Street%20Life%20Pack",
+  },
+  {
+    slug: "cinematic-travel-pack",
+    title: "Cinematic Travel Pack",
+    price: "$99",
+    description:
+      "Editorial-ready travel stock with dramatic light, layered composition, and storytelling frames.",
+    image:
+      "https://images.pixieset.com/506818211/db625df6684925e333ab307fec8a93d0-large.JPG",
+    includes: [
+      "55 high-resolution JPEG images",
+      "Commercial license for campaigns and digital ads",
+      "Instant download delivery",
+    ],
+    buyLabel: "Buy Stock Pack",
+    buyHref: "mailto:hello@kashfaje.com?subject=Purchase%20Cinematic%20Travel%20Pack",
+  },
+  {
+    slug: "portrait-editorial-pack",
+    title: "Portrait Editorial Pack",
+    price: "$89",
+    description:
+      "A portrait-focused stock set built for magazine layouts, branding, and social storytelling.",
+    image:
+      "https://images.pixieset.com/507588211/5146bc2c912a56c90b9e0059016fea77-cover.JPG",
+    includes: [
+      "45 high-resolution JPEG images",
+      "Commercial license for client projects",
+      "Delivered with usage guide",
+    ],
+    buyLabel: "Buy Stock Pack",
+    buyHref: "mailto:hello@kashfaje.com?subject=Purchase%20Portrait%20Editorial%20Pack",
+  },
+]
+
+export const presetProducts: DigitalProduct[] = [
+  {
+    slug: "natural-light-starter-presets",
+    title: "Natural Light Starter Presets",
+    price: "$49",
+    description:
+      "Clean, true-to-skin Lightroom presets designed for fast natural light workflow.",
+    image:
+      "https://images.pixieset.com/620533211/8ba32ea8206089e0f1e9a636046786d3-cover.JPG",
+    includes: [
+      "8 Lightroom presets (desktop + mobile)",
+      "Installation guide PDF",
+      "Best-use exposure notes",
+    ],
+    buyLabel: "Buy Preset Pack",
+    buyHref: "mailto:hello@kashfaje.com?subject=Purchase%20Natural%20Light%20Starter%20Presets",
+  },
+  {
+    slug: "cinematic-tone-presets",
+    title: "Cinematic Tone Presets",
+    price: "$59",
+    description:
+      "Filmic contrast and tonal control presets for portraits, travel, and campaign imagery.",
+    image:
+      "https://images.pixieset.com/620533211/bbbe2ff6be6e5ad9fada1d1dba7e1461-large.JPG",
+    includes: [
+      "10 Lightroom presets (desktop + mobile)",
+      "Daylight and low-light variants",
+      "Video walkthrough link",
+    ],
+    buyLabel: "Buy Preset Pack",
+    buyHref: "mailto:hello@kashfaje.com?subject=Purchase%20Cinematic%20Tone%20Presets",
+  },
+  {
+    slug: "editorial-color-presets",
+    title: "Editorial Color Presets",
+    price: "$69",
+    description:
+      "Refined color profiles inspired by magazine and campaign post-production workflows.",
+    image:
+      "https://images.pixieset.com/282818211/4372424c9b67935794bb95f631540539-large.JPG",
+    includes: [
+      "12 Lightroom presets (desktop + mobile)",
+      "Color profile recommendations",
+      "Skin tone correction notes",
+    ],
+    buyLabel: "Buy Preset Pack",
+    buyHref: "mailto:hello@kashfaje.com?subject=Purchase%20Editorial%20Color%20Presets",
+  },
+]
 
 export const sponsors: Sponsor[] = [
   {

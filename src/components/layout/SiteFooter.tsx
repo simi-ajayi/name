@@ -17,7 +17,7 @@ export function SiteFooter() {
             key={sponsor.name}
             target="_blank"
             rel="noreferrer"
-            className="w-[110px] border border-white/10 bg-white p-1.5 transition-transform duration-300 hover:-translate-y-0.5 max-[680px]:w-[calc(50%-0.5rem)]"
+            className="w-[110px] border border-studio-muted/20 bg-white p-1.5 transition-transform duration-300 hover:-translate-y-0.5 max-[680px]:w-[calc(50%-0.5rem)]"
           >
             <img src={sponsor.logo} alt={sponsor.name} loading="lazy" />
           </a>
@@ -33,14 +33,14 @@ export function SiteFooter() {
           <Link
             key={item.path}
             to={item.path}
-            className="text-sm text-studio-muted transition-colors duration-300 hover:text-white"
+            className="text-sm text-studio-muted transition-colors duration-300 hover:text-studio-text"
           >
             {item.label}
           </Link>
         ))}
       </section> */}
 
-      <p className={`${layoutContainer} mt-4 text-[0.88rem] text-studio-muted`} data-animate="right">
+      <p className={`${layoutContainer} mt-4 text-[0.88rem] text-studio-text-dark!`} data-animate="right">
         © 2026 All Rights Reserved. Kash Faje Photography
       </p>
     </footer>

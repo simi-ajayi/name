@@ -5,13 +5,14 @@ import { mediaFeatures } from "../data/content";
 import { featuredHomeSlugs, galleries } from "../data/galleries";
 import {
   layoutContainer,
-  outlineButton,
+  // outlineButton,
   sectionBlock,
   sectionBlockDark,
   sectionHeader,
   sectionSubtitle,
   sectionTitle,
 } from "../styles/tw";
+import { ArrowRightIcon } from "lucide-react";
 
 export function HomePage() {
   const featuredGalleries = galleries.filter((gallery) =>
@@ -32,8 +33,9 @@ export function HomePage() {
           <PortfolioGrid galleries={featuredGalleries} />
 
           <div className="mt-5" data-animate="right">
-            <Link to="/portfolio/" className={outlineButton}>
-              View Full Galleries
+            <Link to="/portfolio/" className="text-studio-text-dark inline-flex items-center gap-2 border-b border-red-500  transition-colors duration-300">
+              View Full Galleries 
+  <ArrowRightIcon className="w-4" />
             </Link>
           </div>
         </div>
@@ -43,38 +45,39 @@ export function HomePage() {
         <div className={layoutContainer}>
           <header className={sectionHeader} data-animate="left">
             <h2 className={sectionTitle}>Media</h2>
-            <p className={sectionSubtitle}>Watch, listen, and read</p>
+            <p className={sectionSubtitle}>Read articles</p>
           </header>
 
           <div className="grid grid-cols-1 gap-4 min-[681px]:grid-cols-2 min-[1025px]:grid-cols-3">
             {mediaFeatures.map((feature, index) => (
-              <article
-                className="overflow-hidden  bg-white/[0.02]"
+              <Link
+                to={`/publications/${feature.slug}`}
                 key={feature.title}
+                className="group block overflow-hidden border border-studio-muted/25 bg-white shadow-[0_1px_2px_rgba(15,23,42,0.08)] transition-transform duration-300 hover:-translate-y-0.5"
                 data-animate={index % 2 === 0 ? "left" : "right"}
+                aria-label={`Read full article: ${feature.title}`}
               >
-                <img
-                  src={feature.image}
-                  alt={feature.title}
-                  loading="lazy"
-                  className="h-auto w-full"
-                />
-                <div className="p-4">
-                  <span className="text-[0.8rem] uppercase tracking-[0.08em] text-white">
-                    {feature.type}
-                  </span>
-                  <h3 className="mt-1.5 text-xl text-white">{feature.title}</h3>
-                  <p className="mt-2.5 text-studio-muted">
-                    {feature.description}
-                  </p>
-                  <Link
-                    to={feature.linkHref}
-                    className="mt-3 inline-flex border-b border-red-500 text-white transition-colors duration-300 hover:text-red-300"
-                  >
-                    {feature.linkLabel}
-                  </Link>
-                </div>
-              </article>
+                <article>
+                  <img
+                    src={feature.image}
+                    alt={feature.title}
+                    loading="lazy"
+                    className="h-auto w-full"
+                  />
+                  <div className="p-4">
+                    <span className="text-[0.8rem] uppercase tracking-[0.08em] text-studio-text-dark">
+                      Read
+                    </span>
+                    <h3 className="mt-1.5 text-xl text-studio-text-dark">{feature.title}</h3>
+                    <p className="mt-2.5 text-studio-text-dark">
+                      {feature.description}
+                    </p>
+                    <span className="mt-3 inline-flex border-b border-red-500 text-studio-text-dark transition-colors duration-300">
+                      Read Article
+                    </span>
+                  </div>
+                </article>
+              </Link>
             ))}
           </div>
         </div>
